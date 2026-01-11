@@ -1,10 +1,19 @@
-const express = require("express");
+import express from "express";
+import "dotenv/config";
+import connectDB from "./config/db.js";
+import userRouter from "./routes/user.routes.js";
+
 const app = express();
+const port = process.env.PORT || 3000;
+
+await connectDB();
 
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  res.send("Backend running 🚀");
+  res.send("Backend running");
 });
 
-app.listen(5000, () => console.log("Server running on 5000"));
+app.use("/api/user", userRouter);
+
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
