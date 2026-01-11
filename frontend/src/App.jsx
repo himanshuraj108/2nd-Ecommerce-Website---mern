@@ -1,19 +1,20 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CartProvider } from './context/CartContext';
-import { Layout } from './components/Layout';
-import { Home } from './pages/Home';
-import { Shop } from './pages/Shop';
-import { ProductDetails } from './pages/ProductDetails';
-import { Login } from './pages/Login';
-import { Register } from './pages/Register';
-import { Checkout } from './pages/Checkout';
-import { OrderConfirmation } from './pages/OrderConfirmation';
-import { CartDrawer } from './components/Cart/CartDrawer';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { CartProvider } from "./context/CartContext";
+import { Layout } from "./components/Layout";
+import { Home } from "./pages/Home";
+import { Shop } from "./pages/Shop";
+import { ProductDetails } from "./pages/ProductDetails";
+import { Login } from "./pages/Login";
+import { Register } from "./pages/Register";
+import { Checkout } from "./pages/Checkout";
+import { OrderConfirmation } from "./pages/OrderConfirmation";
+import { CartDrawer } from "./components/Cart/CartDrawer";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
-    <CartProvider>
-      <Router>
+    <>
+      <Toaster position="top-right"/>
         <Layout>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -26,8 +27,7 @@ function App() {
           </Routes>
           <CartDrawer />
         </Layout>
-      </Router>
-    </CartProvider>
+    </>
   );
 }
 
